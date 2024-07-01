@@ -1,0 +1,7 @@
+**/__pycache__/
+data/*
+nb/*
+.env
+*.txt
+*.png
+*.drawio
