@@ -31,6 +31,12 @@ def save_raw_data(launches: List[Launch]) -> None:
     return
 
 
+def type_casting(df: pd.DataFrame) -> pd.DataFrame:
+    # Force date_utc to datetime
+    df["date_utc"] = pd.to_datetime(df["date_utc"])
+    return df
+
+
 # Process data
 def process_launches(launches: List[Launch]) -> pd.DataFrame:
     df = pd.json_normalize([launch.model_dump() for launch in launches])
@@ -50,6 +56,8 @@ def process_launches(launches: List[Launch]) -> pd.DataFrame:
         failures_df = pd.json_normalize(df["failures"])
         failures_df.columns = [f"failures.{sub_col}" for sub_col in failures_df.columns]
         df = df.drop(columns=["failures"]).join(failures_df)
+
+    df = type_casting(df)
 
     return df.drop(columns=["fairings"])
 

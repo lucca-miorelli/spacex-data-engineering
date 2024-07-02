@@ -3,5 +3,5 @@ data/*
 nb/*
 .env
 *.txt
-*.png
 *.drawio
+*.drawio.png

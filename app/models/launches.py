@@ -62,6 +62,8 @@ class Links(BaseModel):
 
 
 class Launch(BaseModel):
+    __table__ = "launches"
+
     flight_number: int = Field(...)
     name: str = Field(..., unique=True)
     date_utc: str = Field(...)

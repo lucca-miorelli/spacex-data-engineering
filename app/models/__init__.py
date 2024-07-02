@@ -1,8 +1,7 @@
-from .base import Base, BaseMixin
+from .base import Base
 from .launches import Launch
 
 __all__ = [
     "Launch",
     "Base",
-    "BaseMixin",
 ]
